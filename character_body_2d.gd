@@ -14,6 +14,9 @@ extends CharacterBody2D
 @onready var detector = $"detector_de_daño"
 @onready var disparo_timer = $Timer_disparo
 
+@onready var tiempo_moverse = $tiempo_movimiento
+
+
 @export var velocidad = 100
 @export var rango = 150.0
 @export var disparos_maximos = 5
@@ -29,8 +32,10 @@ func _ready():
 	_actualizar_direccion()
 	
 
-	recarga_timer.timeout.connect(_disparar)
-	recarga_timer.start()
+
+	disparo_timer.timeout.connect(_disparar)
+	recarga_timer.timeout.connect(_terminar_recarga) 
+
 	if !isTarget:
 		anim.play("idle")
 	else:
@@ -51,10 +56,12 @@ func _disparar():
 		recarga_timer.timeout.connect(_terminar_recarga)
 		disparo_timer.start()
 
+
 		if disparos_actuales >= disparos_maximos:
 			recarga_timer.start(2.0)
 			disparo_timer.stop()
 			return
+
 
 
 		anim.play("alerted")
@@ -69,6 +76,10 @@ func _terminar_recarga():
 	_actualizar_direccion()
 	disparo_timer.start()
 
+	canIshoot = false
+	tiempo_moverse.start()
+
+
 func _actualizar_direccion():
 	direccion = Vector2.RIGHT.rotated(randf() * TAU)
 
@@ -76,10 +87,23 @@ func _physics_process(delta):
 	if not canIshoot:
 		velocity = Vector2.ZERO
 		return
+
+
+	# Giro del sprite hacia el jugador
+	var jugador = get_tree().current_scene.get_node_or_null("Player")
+	if jugador:
+		if jugador.global_position.x < global_position.x:
+			anim.flip_h = true
+		else:
+			anim.flip_h = false
+
+	# Movimiento
+
 	if global_position.distance_to(centro) >= rango or is_on_wall():
 		velocity = Vector2.ZERO
 	else:
 		velocity = direccion * velocidad
+
 	move_and_slide()
 
 
@@ -108,3 +132,8 @@ func recibir_daño(cantidad):
 		
 		queue_free()
 		
+
+func _on_tiempo_movimiento_timeout() -> void:
+	pass # Replace with function body.
+	canIshoot = true 
+
