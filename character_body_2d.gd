@@ -80,10 +80,21 @@ func _physics_process(delta):
 	if not canIshoot:
 		velocity = Vector2.ZERO
 		return
+
+	# Giro del sprite hacia el jugador
+	var jugador = get_tree().current_scene.get_node_or_null("Player")
+	if jugador:
+		if jugador.global_position.x < global_position.x:
+			anim.flip_h = true
+		else:
+			anim.flip_h = false
+
+	# Movimiento
 	if global_position.distance_to(centro) >= rango or is_on_wall():
 		velocity = Vector2.ZERO
 	else:
 		velocity = direccion * velocidad
+
 	move_and_slide()
 
 
