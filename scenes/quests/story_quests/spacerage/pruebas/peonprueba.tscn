@@ -61,3 +61,6 @@ flip_h = true
 
 [node name="recibir_daño_peon" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_p57wy")
+
+[node name="Timer_disparo" type="Timer" parent="."]
+

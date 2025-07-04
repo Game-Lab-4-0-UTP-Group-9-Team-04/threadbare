@@ -53,4 +53,6 @@ value = 10.0
 [node name="recibir_daño_peon" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_qoayp")
 
+
 [connection signal="timeout" from="tiempo_movimiento" to="." method="_on_tiempo_movimiento_timeout"]
+
