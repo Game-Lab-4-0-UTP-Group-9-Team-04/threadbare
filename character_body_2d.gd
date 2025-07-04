@@ -13,6 +13,8 @@ extends CharacterBody2D
 @onready var recibir_daño_sonido = $"recibir_daño_peon"
 @onready var detector = $"detector_de_daño"
 @onready var disparo_timer = $Timer_disparo
+@onready var tiempo_moverse = $tiempo_movimiento
+
 
 @export var velocidad = 100
 @export var rango = 150.0
@@ -29,8 +31,8 @@ func _ready():
 	_actualizar_direccion()
 	
 
-	recarga_timer.timeout.connect(_disparar)
-	recarga_timer.start()
+	disparo_timer.timeout.connect(_disparar)
+	recarga_timer.timeout.connect(_terminar_recarga) 
 	if !isTarget:
 		anim.play("idle")
 	else:
@@ -68,6 +70,8 @@ func _terminar_recarga():
 	disparos_actuales = 0
 	_actualizar_direccion()
 	disparo_timer.start()
+	canIshoot = false
+	tiempo_moverse.start()
 
 func _actualizar_direccion():
 	direccion = Vector2.RIGHT.rotated(randf() * TAU)
@@ -108,3 +112,6 @@ func recibir_daño(cantidad):
 		
 		queue_free()
 		
+func _on_tiempo_movimiento_timeout() -> void:
+	pass # Replace with function body.
+	canIshoot = true 
