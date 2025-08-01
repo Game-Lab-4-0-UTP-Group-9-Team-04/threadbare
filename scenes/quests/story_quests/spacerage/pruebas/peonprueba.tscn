@@ -63,4 +63,3 @@ flip_h = true
 stream = ExtResource("3_p57wy")
 
 [node name="Timer_disparo" type="Timer" parent="."]
-

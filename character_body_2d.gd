@@ -14,9 +14,8 @@ extends CharacterBody2D
 @onready var detector = $"detector_de_daño"
 @onready var disparo_timer = $Timer_disparo
 
+
 @onready var tiempo_moverse = $tiempo_movimiento
-
-
 @export var velocidad = 100
 @export var rango = 150.0
 @export var disparos_maximos = 5
@@ -33,8 +32,11 @@ func _ready():
 	
 
 
+	recarga_timer.timeout.connect(_disparar)
+	recarga_timer.start()
 	disparo_timer.timeout.connect(_disparar)
 	recarga_timer.timeout.connect(_terminar_recarga) 
+
 
 	if !isTarget:
 		anim.play("idle")
@@ -63,7 +65,6 @@ func _disparar():
 			return
 
 
-
 		anim.play("alerted")
 		var bala = bala_escena.instantiate()
 		bala.global_position = puntero_peon.global_position
@@ -76,9 +77,9 @@ func _terminar_recarga():
 	_actualizar_direccion()
 	disparo_timer.start()
 
+
 	canIshoot = false
 	tiempo_moverse.start()
-
 
 func _actualizar_direccion():
 	direccion = Vector2.RIGHT.rotated(randf() * TAU)
@@ -97,13 +98,13 @@ func _physics_process(delta):
 		else:
 			anim.flip_h = false
 
-	# Movimiento
 
+	# Movimiento
 	if global_position.distance_to(centro) >= rango or is_on_wall():
 		velocity = Vector2.ZERO
 	else:
 		velocity = direccion * velocidad
-
+    
 	move_and_slide()
 
 
@@ -136,4 +137,5 @@ func recibir_daño(cantidad):
 func _on_tiempo_movimiento_timeout() -> void:
 	pass # Replace with function body.
 	canIshoot = true 
+
 
