@@ -35,6 +35,12 @@ position = Vector2(-17, -22)
 wait_time = 1.5
 autostart = true
 
+[node name="Timer_disparo" type="Timer" parent="."]
+
+[node name="tiempo_movimiento" type="Timer" parent="."]
+wait_time = 7.5
+one_shot = true
+
 [node name="vida_1" type="ProgressBar" parent="."]
 modulate = Color(1, 0.05, 0.05, 1)
 offset_left = -60.0
@@ -47,4 +53,7 @@ value = 10.0
 [node name="recibir_daño_peon" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_qoayp")
 
+
 [node name="Timer_disparo" type="Timer" parent="."]
+[connection signal="timeout" from="tiempo_movimiento" to="." method="_on_tiempo_movimiento_timeout"]
+
