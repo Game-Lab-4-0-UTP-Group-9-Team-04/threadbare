@@ -264,6 +264,7 @@ shape = SubResource("RectangleShape2D_6ddbj")
 position = Vector2(503, 529)
 scale = Vector2(1.8396, 1.8396)
 texture = ExtResource("3_6ddbj")
+metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="TileMapLayers/Stone"]
 position = Vector2(43, 0)
