@@ -225,4 +225,3 @@ func _on_cat_body_entered(body: Node2D) -> void:
 	vida = clamp(vida, 0, vida_max)
 	barra_vida.value = vida
 	print("Jugador curo ", 10, " de vida. Le queda ", vida)
-

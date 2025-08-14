@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://8h4xypdrtmwl"
-path="res://.godot/imported/disparo_arma1.wav-bb9a42be799a8abbda0e19db6842fdc9.sample"
+uid="uid://kv5qd28lct8b"
+path="res://.godot/imported/disparo_Arma1.wav-9d57af339e0c4dca68664b1513040991.sample"
 
 [deps]
 
-source_file="res://scenes/quests/story_quests/spacerage/pruebas/disparo_arma1.wav"
-dest_files=["res://.godot/imported/disparo_arma1.wav-bb9a42be799a8abbda0e19db6842fdc9.sample"]
+source_file="res://scenes/quests/story_quests/spacerage/pruebas/disparo_Arma1.wav"
+dest_files=["res://.godot/imported/disparo_Arma1.wav-9d57af339e0c4dca68664b1513040991.sample"]
 
 [params]
 

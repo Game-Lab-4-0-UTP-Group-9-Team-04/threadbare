@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://djr7yoqla7jj3" path="res://arma_1.gd" id="1_aeurf"]
 [ext_resource type="Texture2D" uid="uid://t8gu8jeh735k" path="res://scenes/quests/story_quests/spacerage/pruebas/arma_1.png" id="2_gs8eq"]
-[ext_resource type="AudioStream" uid="uid://8h4xypdrtmwl" path="res://scenes/quests/story_quests/spacerage/pruebas/disparo_arma1.wav" id="3_gs8eq"]
-[ext_resource type="AudioStream" uid="uid://e3xg6hbf0038" path="res://scenes/quests/story_quests/spacerage/pruebas/sonido_recarga.wav" id="4_lx0h2"]
+[ext_resource type="AudioStream" uid="uid://kv5qd28lct8b" path="res://scenes/quests/story_quests/spacerage/pruebas/disparo_arma1.wav" id="3_gs8eq"]
+[ext_resource type="AudioStream" uid="uid://bt3mn8u0tm21p" path="res://scenes/quests/story_quests/spacerage/pruebas/recarga_sonido_arma_1.wav" id="4_lx0h2"]
 
 [node name="arma_1" type="Node2D"]
 script = ExtResource("1_aeurf")

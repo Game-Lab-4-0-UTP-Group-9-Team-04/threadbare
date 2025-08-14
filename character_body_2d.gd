@@ -104,7 +104,7 @@ func _physics_process(delta):
 		velocity = Vector2.ZERO
 	else:
 		velocity = direccion * velocidad
-    
+	
 	move_and_slide()
 
 
@@ -137,5 +137,3 @@ func recibir_daño(cantidad):
 func _on_tiempo_movimiento_timeout() -> void:
 	pass # Replace with function body.
 	canIshoot = true 
-
-
